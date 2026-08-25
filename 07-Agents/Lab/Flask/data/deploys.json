@@ -1,0 +1,56 @@
+[
+  {
+    "deploy_id": "dep-1001",
+    "timestamp": "2026-07-13T09:05:00.000Z",
+    "service": "search-service",
+    "version": "v1.9.2",
+    "commit": "3f2a1b0",
+    "author": "priya.k",
+    "notes": "Routine dependency bump"
+  },
+  {
+    "deploy_id": "dep-1002",
+    "timestamp": "2026-07-15T02:15:00.000Z",
+    "service": "search-service",
+    "version": "v1.10.0",
+    "commit": "7c1e2aa",
+    "author": "priya.k",
+    "notes": "Add product variants support (schema migration 0047)"
+  },
+  {
+    "deploy_id": "dep-1003",
+    "timestamp": "2026-07-14T14:31:55.000Z",
+    "service": "checkout-service",
+    "version": "v2.4.0",
+    "commit": "a1b2c3d",
+    "author": "marcus.t",
+    "notes": "Add promo code stacking support"
+  },
+  {
+    "deploy_id": "dep-1004",
+    "timestamp": "2026-07-14T15:10:10.000Z",
+    "service": "checkout-service",
+    "version": "v2.3.9",
+    "commit": "f9e8d7c",
+    "author": "marcus.t",
+    "notes": "Emergency rollback of v2.4.0"
+  },
+  {
+    "deploy_id": "dep-1005",
+    "timestamp": "2026-07-15T06:00:00.000Z",
+    "service": "inventory-service",
+    "version": "v3.1.4",
+    "commit": "d4c5b6a",
+    "author": "wei.l",
+    "notes": "Switch reservation cache to in-memory map (no eviction policy set)"
+  },
+  {
+    "deploy_id": "dep-1006",
+    "timestamp": "2026-07-16T09:40:00.000Z",
+    "service": "payments-client",
+    "version": "v1.2.0",
+    "commit": "9a8b7c6",
+    "author": "marcus.t",
+    "notes": "Batch multiple charge calls per checkout to reduce round trips"
+  }
+]

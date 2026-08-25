@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>MiniGPT</title>
+    <link rel="stylesheet" href="/static/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="/static/script.js" defer></script>
+  </head>
+  <body>
+    <!-- Scrollable message area -->
+    <div class="chat-scroll">
+      <div class="chat-container"></div>
+    </div>
+
+    <!-- Typing container -->
+    <div class="typing-container">
+      <div class="typing-content">
+
+        <!-- File chips: one per selected file, shown before the message is sent -->
+        <div class="file-chip-list" id="file-chip-list"></div>
+
+        <div class="typing-row">
+          <div class="typing-textarea">
+            <button id="attach-btn" class="icon-btn material-symbols-rounded attach-btn" type="button" title="Attach a file">add</button>
+            <textarea id="chat-input" spellcheck="false" placeholder="Ask me anything" required></textarea>
+            <input type="file" id="file-input" multiple hidden>
+          </div>
+          <div class="typing-controls">
+            <button id="send-btn" class="icon-btn material-symbols-rounded" type="button">send</button>
+            <button id="mic-btn" class="icon-btn material-symbols-rounded" type="button">mic</button>
+            <button id="view-conversation-btn" class="icon-btn material-symbols-rounded" type="button" disabled>visibility</button>
+            <button id="delete-btn" class="icon-btn material-symbols-rounded" type="button">delete</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Cached conversation modal -->
+    <dialog id="conversation-modal">
+      <div class="modal-header">
+        <span class="modal-title">Cached Conversation</span>
+        <span class="modal-subtitle" id="modal-subtitle"></span>
+        <button id="close-modal-btn" class="icon-btn material-symbols-rounded" type="button" title="Close">close</button>
+      </div>
+      <pre id="conversation-json"></pre>
+    </dialog>
+  </body>
+</html>

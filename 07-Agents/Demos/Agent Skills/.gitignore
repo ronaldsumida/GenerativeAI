@@ -1,0 +1,11 @@
+# Microsoft authentication cache -- contains reusable token material
+data/token_cache.json
+data/token_cache.json.tmp
+
+# Generated files
+static/itineraries/*.docx
+static/itineraries/*.html
+
+# Python
+__pycache__/
+*.py[cod]

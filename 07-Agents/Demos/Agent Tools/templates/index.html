@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Agent Chat with Tools</title>
+    <link rel="stylesheet" href="/static/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="/static/script.js" defer></script>
+  </head>
+  <body>
+    <!-- Chats container -->
+    <div class="chat-container"></div>
+    
+    <!-- Typing container -->
+    <div class="typing-container">
+      <div class="typing-content">
+        <div class="typing-textarea">
+          <textarea id="chat-input" spellcheck="false" placeholder="Enter a prompt here" required></textarea>
+        </div>
+        <div class="typing-controls">
+          <button id="send-btn" class="icon-btn material-symbols-rounded" type="button">send</button>
+          <button id="mic-btn" class="icon-btn material-symbols-rounded" type="button">mic</button>
+          <button id="theme-btn" class="icon-btn material-symbols-rounded" type="button">light_mode</button>
+          <button id="delete-btn" class="icon-btn material-symbols-rounded" type="button">delete</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

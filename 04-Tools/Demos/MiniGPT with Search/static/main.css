@@ -1,0 +1,521 @@
+/* Import Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+:root {
+  --text-color: #0d0d0d;
+  --icon-color: #8e8ea0;
+  --icon-hover-bg: #ececec;
+  --placeholder-color: #8e8ea0;
+  --page-bg: #ffffff;
+  --user-bubble-bg: #f4f4f4;
+  --composer-bg: #ffffff;
+  --composer-border: #e3e3e3;
+  --composer-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --chip-bg: #f4f4f4;
+  --chip-border: #e3e3e3;
+  --link-color: #1a73e8;
+  --link-hover-color: #174ea6;
+  --error-color: #e55865;
+}
+html {
+  height: 100%;
+}
+body {
+  background: var(--page-bg);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+a {
+  color: var(--link-color);
+}
+a:hover {
+  color: var(--link-hover-color);
+}
+.icon-btn {
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  color: var(--icon-color);
+  font: inherit;
+  line-height: 1;
+  user-select: none;
+  cursor: pointer;
+  text-align: center;
+}
+.icon-btn:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+/* ── Chat column ──────────────────────────────────────────────────────────── */
+.chat-scroll {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  width: 100%;
+}
+.chat-container {
+  max-width: 800px;
+  margin: 0 auto;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 20px 20px 20px;
+}
+/* The chat input is a single line most of the time and sits right at the
+   edge of overflowing, which was making a themed scrollbar thumb
+   appear as a stray vertical bar. Hide it - scrolling still works via
+   mouse wheel/keys once the textarea grows past max-height, it just
+   isn't visually rendered as a bar. */
+#chat-input {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+#chat-input::-webkit-scrollbar {
+  display: none;
+  width: 0;
+}
+.default-text {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 10px;
+  text-align: center;
+  color: var(--text-color);
+}
+.default-text h1 {
+  font-size: 2.6rem;
+  font-weight: 600;
+}
+
+/* Every message row */
+.chat {
+  display: flex;
+  padding: 6px 0;
+}
+
+/* User message: right-aligned gray pill, no avatar */
+.chat.outgoing {
+  justify-content: flex-end;
+}
+.user-bubble {
+  background: var(--user-bubble-bg);
+  color: var(--text-color);
+  border-radius: 22px;
+  padding: 10px 18px;
+  max-width: 75%;
+}
+.user-bubble p {
+  white-space: pre-wrap;
+  font-size: 1rem;
+  word-break: break-word;
+}
+
+/* Assistant message: plain left-aligned text, no avatar, no bubble */
+.chat.incoming {
+  justify-content: flex-start;
+  padding-bottom: 28px;
+}
+.assistant-message {
+  color: var(--text-color);
+  max-width: 100%;
+  width: 100%;
+}
+.assistant-message p {
+  white-space: pre-wrap;
+  font-size: 1rem;
+  line-height: 1.7;
+  word-break: break-word;
+  margin-bottom: 0.9em;
+}
+.assistant-message p:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-output ul,
+.markdown-output ol {
+  margin-left: 0;
+  margin-bottom: 0.8em;
+  padding-left: 1.5em;
+}
+.markdown-output li {
+  margin-bottom: 0.25em;
+}
+.markdown-output hr {
+  margin: 16px 0 24px 0;
+  border: none;
+  border-top: 1px solid var(--composer-border);
+}
+.markdown-output h1 {
+  font-size: 1.5em;
+  margin: 0.6em 0 0.4em 0;
+}
+.markdown-output h2 {
+  font-size: 1.35em;
+  margin: 0.6em 0 0.4em 0;
+}
+.markdown-output h3 {
+  font-size: 1.2em;
+  margin: 0.6em 0 0.4em 0;
+}
+.markdown-output table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0 0 20px 0;
+  border: 1px solid var(--composer-border);
+  table-layout: auto;
+}
+.markdown-output th,
+.markdown-output td {
+  border: 1px solid var(--composer-border);
+  padding: 8px 12px;
+  color: var(--text-color);
+  word-wrap: break-word;
+  max-width: 200px;
+}
+.markdown-output td {
+  text-align: left;
+}
+.markdown-output th {
+  background: var(--user-bubble-bg);
+  font-weight: 600;
+  text-align: center;
+}
+.markdown-output ul ul,
+.markdown-output ol ol,
+.markdown-output ul ol,
+.markdown-output ol ul {
+  margin-left: 0;
+  padding-left: 1.5em;
+}
+.markdown-output code {
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  font-size: 0.9em;
+  background: var(--user-bubble-bg);
+  padding: 2px 5px;
+  border-radius: 4px;
+}
+.markdown-output pre {
+  background: var(--user-bubble-bg);
+  padding: 12px 14px;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin-bottom: 0.9em;
+}
+.markdown-output pre code {
+  background: transparent;
+  padding: 0;
+}
+
+/* File-attachment indicator shown inline within a sent message */
+.chat-file-attachment {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.08);
+  color: var(--text-color);
+  font-size: 0.85rem;
+  width: fit-content;
+}
+.chat-file-attachment .material-symbols-rounded {
+  font-size: 1.1rem;
+}
+
+/* Typing indicator */
+.typing-animation {
+  display: inline-flex;
+  padding: 6px 0;
+}
+.typing-animation .typing-dot {
+  height: 7px;
+  width: 7px;
+  border-radius: 50%;
+  margin: 0 3px;
+  opacity: 0.7;
+  background: var(--text-color);
+  animation: animateDots 1.5s var(--delay) ease-in-out infinite;
+}
+.typing-animation .typing-dot:first-child {
+  margin-left: 0;
+}
+@keyframes animateDots {
+  0%,44% {
+    transform: translateY(0px);
+  }
+  28% {
+    opacity: 0.4;
+    transform: translateY(-6px);
+  }
+  44% {
+    opacity: 0.2;
+  }
+}
+
+/* ── Composer (floating pill input) ──────────────────────────────────────── */
+.typing-container {
+  flex-shrink: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 16px 20px 22px 20px;
+  background: var(--page-bg);
+}
+.typing-container .typing-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 800px;
+  width: 100%;
+}
+.typing-container .typing-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: var(--composer-bg);
+  border: 1px solid var(--composer-border);
+  border-radius: 28px;
+  box-shadow: var(--composer-shadow);
+  padding: 6px 8px;
+}
+.typing-container .typing-textarea {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.typing-textarea textarea {
+  resize: none;
+  height: 40px;
+  width: 100%;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 9px 8px 9px 44px;
+  color: var(--text-color);
+  font-size: 1rem;
+  background: transparent;
+  max-height: 200px;
+  overflow-y: auto;
+}
+.typing-textarea textarea:focus {
+  outline: none;
+  box-shadow: none;
+}
+.typing-textarea textarea::placeholder {
+  color: var(--placeholder-color);
+}
+
+/* Attach ("+") button, sits inside the left edge of the pill */
+.attach-btn {
+  position: absolute;
+  left: 4px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  flex-shrink: 0;
+}
+.attach-btn:hover:enabled {
+  background: var(--icon-hover-bg);
+}
+
+/* Send / mic / theme / delete controls, compact circular icons at the right of the pill */
+.typing-controls {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.typing-controls .icon-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 2px;
+  flex: 0 0 34px;
+}
+.typing-controls .icon-btn:hover:enabled {
+  background: var(--icon-hover-bg);
+}
+#send-btn {
+  background: var(--text-color);
+  color: var(--page-bg);
+}
+#send-btn:hover:enabled {
+  background: var(--text-color);
+  opacity: 0.85;
+}
+#send-btn:disabled {
+  background: var(--icon-color);
+  opacity: 0.4;
+}
+
+/* File chip: shown above the pill once a file has been selected */
+.file-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  max-width: 100%;
+  padding: 6px 10px;
+  border-radius: 12px;
+  background: var(--chip-bg);
+  border: 1px solid var(--chip-border);
+  margin-left: 4px;
+}
+.file-chip[hidden] {
+  display: none;
+}
+.file-chip .chip-icon {
+  font-size: 1.1rem;
+  color: var(--icon-color);
+}
+.file-chip .chip-filename {
+  font-size: 0.85rem;
+  color: var(--text-color);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 320px;
+}
+.file-chip.uploading .chip-filename {
+  opacity: 0.6;
+}
+.file-chip .chip-remove {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  font-size: 1rem;
+  color: var(--icon-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.file-chip .chip-remove:hover:enabled {
+  color: var(--error-color);
+  background: var(--icon-hover-bg);
+}
+
+/* Cached-conversation modal */
+#conversation-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  flex-direction: column;
+  border: 1px solid var(--composer-border);
+  border-radius: 12px;
+  padding: 0;
+  width: 80vw;
+  height: 80vh;
+  box-shadow: var(--composer-shadow);
+  color: var(--text-color);
+  background: var(--composer-bg);
+}
+#conversation-modal[open] {
+  display: flex;
+}
+#conversation-modal::backdrop {
+  background: rgba(0, 0, 0, 0.4);
+}
+.modal-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 10px 14px 16px;
+  border-bottom: 1px solid var(--composer-border);
+  flex-shrink: 0;
+}
+.modal-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+.modal-subtitle {
+  flex: 1;
+  font-size: 0.8rem;
+  color: var(--icon-color);
+}
+#close-modal-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+#close-modal-btn:hover:enabled {
+  background: var(--icon-hover-bg);
+}
+#conversation-json {
+  flex: 1;
+  margin: 0;
+  padding: 16px;
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-y: auto;
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+@media screen and (max-width: 600px) {
+  .default-text h1 {
+    font-size: 2rem;
+  }
+  textarea {
+    font-size: 0.95rem !important;
+  }
+  .chat-container {
+    padding: 24px 12px 20px 12px;
+  }
+  .user-bubble {
+    max-width: 88%;
+  }
+  .typing-container {
+    padding: 10px 10px 16px 10px;
+  }
+  .typing-textarea textarea {
+    padding-left: 40px;
+  }
+  .attach-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 1.2rem;
+  }
+  .typing-controls .icon-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 1.05rem;
+    flex: 0 0 30px;
+  }
+  .file-chip .chip-filename {
+    max-width: 200px;
+  }
+}

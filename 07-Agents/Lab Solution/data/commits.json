@@ -1,0 +1,59 @@
+[
+  {
+    "sha": "3f2a1b0",
+    "timestamp": "2026-07-12T21:00:00.000Z",
+    "author": "priya.k",
+    "message": "Bump elasticsearch client to 8.12",
+    "files": [
+      "search-service/requirements.txt"
+    ]
+  },
+  {
+    "sha": "7c1e2aa",
+    "timestamp": "2026-07-15T01:15:00.000Z",
+    "author": "priya.k",
+    "message": "Add product_variants table and migration 0047",
+    "files": [
+      "search-service/migrations/0047_add_product_variants.py",
+      "search-service/models/product.py"
+    ]
+  },
+  {
+    "sha": "a1b2c3d",
+    "timestamp": "2026-07-14T12:32:00.000Z",
+    "author": "marcus.t",
+    "message": "Support stacking multiple promo codes at checkout",
+    "files": [
+      "checkout-service/promo_engine.py",
+      "checkout-service/checkout_handler.py"
+    ]
+  },
+  {
+    "sha": "f9e8d7c",
+    "timestamp": "2026-07-14T15:10:10.000Z",
+    "author": "marcus.t",
+    "message": "Revert 'Support stacking multiple promo codes at checkout'",
+    "files": [
+      "checkout-service/promo_engine.py",
+      "checkout-service/checkout_handler.py"
+    ]
+  },
+  {
+    "sha": "d4c5b6a",
+    "timestamp": "2026-07-15T05:30:00.000Z",
+    "author": "wei.l",
+    "message": "Replace LRU reservation cache with plain dict for lower latency",
+    "files": [
+      "inventory-service/reservation_cache.py"
+    ]
+  },
+  {
+    "sha": "9a8b7c6",
+    "timestamp": "2026-07-16T09:00:00.000Z",
+    "author": "marcus.t",
+    "message": "Batch charge calls to cut payments-api round trips",
+    "files": [
+      "payments-client/batching.py"
+    ]
+  }
+]

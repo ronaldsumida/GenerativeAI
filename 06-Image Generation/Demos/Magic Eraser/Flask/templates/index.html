@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Magic Eraser</title>
+  <!-- Google Fonts and Material Icons for a modern Material Design look -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <!-- Our custom CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <div class="container">
+    <!-- Canvas container with a white background -->
+    <div id="canvas-container">
+      <canvas id="photoCanvas" width="0" height="0" style="display: none; visibility: hidden;"></canvas>
+    </div>
+    <!-- Buttons -->
+    <div id="controls">
+      <button id="loadButton" class="md-button">Load Photo</button>
+      <button id="inpaintButton" class="md-button" disabled>Inpaint</button>
+      <button id="saveButton" class="md-button" disabled>Save Photo</button>
+      <!-- Hidden file input -->
+      <input type="file" id="fileInput" accept="image/*" style="display: none;">
+    </div>
+  </div>
+  <div id="overlay">
+    <div id="spinner"></div>
+  </div>
+  <!-- Our custom JavaScript -->
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

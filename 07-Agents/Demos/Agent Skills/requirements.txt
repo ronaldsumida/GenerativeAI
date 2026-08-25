@@ -1,0 +1,7 @@
+openai
+agno
+Flask
+msal
+requests
+python-docx
+ddgs

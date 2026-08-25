@@ -1,0 +1,32 @@
+[
+  {
+    "question": "How long does it take to charge an electric vehicle?",
+    "expected_answer": "Charging time depends on the charger level and the vehicle's battery size. Level 1 (standard 120V outlet) can take a full day or more, Level 2 (240V) typically takes several hours, and DC fast charging can add significant range in around 20-40 minutes.",
+    "category": "in-scope"
+  },
+  {
+    "question": "How far can an EV go on a single charge?",
+    "expected_answer": "Most modern EVs offer a range of roughly 200 to 300 miles on a full charge, though this varies by model, battery size, driving conditions, and climate.",
+    "category": "in-scope"
+  },
+  {
+    "question": "Does regenerative braking cause brakes to wear out faster?",
+    "expected_answer": "No. Regenerative braking reduces reliance on the friction brakes, which typically means EV brake pads and rotors last longer than those on conventional vehicles.",
+    "category": "in-scope"
+  },
+  {
+    "question": "Are EVs cheaper to maintain than conventional cars?",
+    "expected_answer": "Generally yes. EVs have fewer moving parts (no oil changes, spark plugs, or exhaust systems) which tends to lower routine maintenance costs.",
+    "category": "in-scope"
+  },
+  {
+    "question": "Will my EV explode if I take it through a car wash?",
+    "expected_answer": "No. EV battery packs and electrical components are sealed and designed to be safe in wet conditions, including car washes.",
+    "category": "in-scope"
+  },
+  {
+    "question": "How much does a Tesla Model Y cost?",
+    "expected_answer": "I don't know.",
+    "category": "out-of-scope"
+  }
+]
